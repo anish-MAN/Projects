@@ -1,0 +1,46 @@
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }  
+  .container input {
+    width: calc(100% - 20px);
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .container button {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .container button:hover {
+    background-color: #0056b3;
+  }
+  .cards{
+    height: 100px;
+    width: 100px;
+    border: 3px solid;
+    border-radius: 5px;
+  }
+  .rectangle{
+    height: 100px;
+    width: 100px;
+    border: 2px solid;
+  }
+  .rectangle1{
+    height: 100px;
+    width: 100px;
+    border: 2px solid red;
+  }

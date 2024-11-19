@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image-Search App</title>
+    <style>
+        body{
+            background-color: beige;
+            line-height: 1.6;
+            margin: 0;
+        }
+        h1{
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 60px;
+            color: brown;
+        }
+        form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        #search-input{
+            width: 60%;
+            min-width: 400px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            color: brown;
+        }
+        #searchbtn{
+            padding: 10px 20px;
+            border: none;
+            background-color: beige;
+            color: brown;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        #searchbtn:hover{
+            background-color: rgb(211, 211, 193);
+        }
+        .search-results{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            min-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        #showmorebtn{
+            background-color: #fff;
+            border: none;
+            color: brown;
+            padding: 10px 20px;
+            display: block;
+            margin: 10px auto;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        #showmorebtn:hover{
+            background-color: rgb(211, 211, 193);
+        }
+    </style>
+</head>
+<body>
+    <h1>Image-Search App</h1>
+    <form>
+        <input type="text" id="search-input" placeholder="Search for images...">
+        <button id="searchbtn">Search</button>
+    </form>
+    <div class="search-results"></div>
+    <button id="showmorebtn">Show more</button>
+
+    <script>
+
+        const formE1 = document.querySelector("form");
+        const searchInputE1 = document.getElementById("search-input");
+        const searchResultsE1 = document.querySelector(".search-results");
+        const showMoreButtonE1 = document.getElementById("showmorebtn");
+
+        let inputData = "";
+        let page = 1;
+
+        
+    </script>
+</body>
+</html>

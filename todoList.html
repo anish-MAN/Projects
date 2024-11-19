@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO DO LIST</title>
+    <style>
+      .taskTitle {
+        color:beige;
+        font-size: larger;
+        font-weight: 500;
+        display:flex;
+      }
+      #taskContainer{
+        background-color:rgb(185, 88, 88);
+        text-align: center;
+        padding: 10px;
+        margin: 10px;
+      }
+      button{
+        text-decoration: none;
+        background-color: transparent;
+        font-size: 12px;
+        border-radius: 5px;
+      }
+      #i1{
+        height: 20px;
+        width: 200px;
+        color: rgb(194, 156, 105);
+        margin-left: 40%;
+        border-radius: 5px;
+      }
+      h1{
+        text-align: center;
+      }
+      p{
+        text-align: center;
+        font-size: 30px;
+      }
+    </style>
+    </head>
+  <body>
+    <h1>To-Do List...</h1> <br>
+    <p>Enter Task:</p>
+    <input type="text" name="" id="i1" />
+    <button onclick="addElement()">Add</button>
+    <div id="taskContainer"></div>
+    <script>
+      if (!localStorage.hasOwnProperty("allTask")) {
+        localStorage.setItem("allTask", "[]");
+      }
+      let taskContainer = document.getElementById("taskContainer");
+      function addElement() {
+        let obj = {
+          taskTime: new Date(),
+          taskTitle: document.getElementById("i1").value,
+        };
+        allTask = JSON.parse(localStorage.getItem("allTask"));
+        allTask.push(obj);
+        localStorage.setItem("allTask", JSON.stringify(allTask));
+        console.log(allTask);
+        showTask();
+      }
+      function showTask() {
+        taskContainer.innerHTML = "";
+        allTask = JSON.parse(localStorage.getItem("allTask")); 
+        for (let i = 0; i < allTask.length; i++) {
+          let task = document.createElement("div");        
+          task.innerHTML = `
+                <span class="taskTitle"> ${allTask[i].taskTitle} </span>
+                <button onclick="deleteElement(${i})"> X </button> `;
+          taskContainer.appendChild(task);
+        }
+      }
+      function deleteElement(index) {
+        allTask = JSON.parse(localStorage.getItem("allTask"));
+        allTask.splice(index, 1);
+        localStorage.setItem("allTask", JSON.stringify(allTask));
+        console.log(allTask);
+        showTask();
+      }
+      showTask()
+    </script>
+  </body>
+</html>

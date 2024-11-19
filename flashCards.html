@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Input Container</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <label for="name">Questions:</label>
+    <input type="text" id="que" name="name" required>
+
+    <label for="name">Answers:</label>
+    <input type="text" id="ans" name="name" required>
+
+    <button type="submit" onclick="add()">Submit</button>
+  </div>
+
+<div id="cardsDiv"></div>
+<script>
+  let que = document.getElementById('que')
+  let ans = document.getElementById('ans')
+  let cardsDiv = document.getElementById('cardsDiv')
+
+  function add(){
+    let card = document.createElement('div')
+    card.className = 'card'
+    card.innerHTML = `
+    <div class= "rectangle">${que.value}</div>
+    <div class= "rectangle1">${ans.value}</div>
+    <button class="show">Show</button>
+    `
+    cardsDiv.appendChild(card)
+  }
+
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock</title>
+  </head>
+  <body>
+    <div id="hours">Hours</div>
+    <div id="mins">Minutes</div>
+    <div id="sec">Seconds</div>
+    <button onclick="clearInterval(startTimer)">Time</button>
+    <script>
+      function gettime() {
+        let currenttime = new Date();
+        let currenthour = currenttime.getHours();
+        let currentmin = currenttime.getMinutes();
+        let currentsec = currenttime.getSeconds();
+        document.getElementById("hours").innerHTML = currenthour;
+        document.getElementById("mins").innerHTML = currentmin;
+        document.getElementById("sec").innerHTML = currentsec;
+      }
+      let startTimer = setInterval(gettime, 1000);
+    </script>
+  </body>
+</html>

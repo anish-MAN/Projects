@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project</title>
+    <style>
+        *{
+            padding: 0;margin: 0;
+        }
+        .container{
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            margin: 1rem;
+            height: 600px;
+            width: 550px;
+            /* border: 2px solid red; */
+            border-radius: 10px;
+            /* color: grey; */
+        }
+       
+        .box .content{
+            height: 250px;
+            border: 2px solid rgb(219, 23, 23);
+            background: grey;
+            font-size: 1.25rem;
+            overflow-y: scroll;
+        }
+        .box .info{
+            height: 100px;
+            border: 2px solid rgb(216, 23, 23);
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            font-size: 1.3rem;
+            text-align: center;
+            background: rgb(207, 202, 202);
+
+        }
+        .box .info  div{
+            border-right: 2px solid red;
+        }
+        /* .box .info .read{
+            height: 100px;
+            width: 100px;
+            border: 2px solid red;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+        .box .info .write{
+            height: 100px;
+            width: 100px;
+            border: 2px solid red;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+        .box .info .comment{
+            height: 100px;
+            width: 100px;
+            border: 2px solid red;
+            font-size: 1.3rem;
+            text-align: center;
+        } */
+        img{
+            width: 100%;
+            object-fit: cover;
+            aspect-ratio: 16/9;
+            /* display: flex; */
+            /* position: relative; */
+        }
+        @media screen and (max-width:800px) {
+            .container{
+                flex-direction: column;
+                width: 100%;
+            }
+            .box{
+                /* margin: 2rem; */
+                width: 80%;
+                height: 600px;
+            }
+
+            .box .info{
+                grid-template-columns: repeat(2,1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box box1">
+            <img src="project1.jpeg"/>
+            <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vitae eum perspiciatis, neque dolorum reiciendis corporis nostrum facere repellendus nisi laborum sequi pariatur dolorem libero iusto aliquam? Quis, adipisci amet! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia ipsum facilis debitis minima voluptas molestias numquam impedit incidunt molestiae! Quam iure culpa, dicta saepe sequi voluptatum accusamus accusantium labore placeat.</div>
+            <div class="info">
+                <div>Ex-Showroom Price $250,000</div>
+                <div class="read">0-100 km/h in 3.0 sec</div>
+                <div class="write">Top Speed 325 km/h.</div>
+                <div class="comment">Horsepower 900bhp.</div>
+            </div>
+        </div>
+        <div class="box box2">
+                        <img src="project2.webp"/>
+
+            <div class="content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore impedit repudiandae fuga placeat, nesciunt suscipit. Corrupti quia saepe inventore architecto enim, sequi ad accusantium id minima, rerum quis. Ab, quae? Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, quis aut molestias unde similique et cupiditate minus vitae molestiae temporibus culpa, corporis a ducimus laborum fugit at deserunt! Eius, asperiores?</div>
+            <div class="info">Ex-Showroom Price $230,000
+                <div class="read">0-100 km/h in 1.9 sec</div>
+                <div class="write">Top Speed 327 km/h.</div>
+                <div class="comment">Horsepower 1025bhp.</div>
+            </div>
+        </div>
+        <div class="box box3">
+                        <img src="project3.jpeg"/>
+
+            <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et laboriosam odio itaque saepe expedita consequuntur minus ipsa neque magnam quos illum ad fugiat reiciendis sed veritatis, fugit, a architecto id! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus, libero modi. Numquam, animi sunt laboriosam ut ratione ipsa vel nesciunt doloremque, exercitationem quam tempore dicta adipisci repellendus obcaecati quas voluptatibus.</div>
+            <div class="info">Ex-Showroom Price $220,000
+                <div class="read">0-100 km/h in 2.9 sec</div>
+                <div class="write">Top Speed 320 km/h.</div>
+                <div class="comment">Horsepower 890bhp.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

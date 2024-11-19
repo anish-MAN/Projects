@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random</title>
+</head>
+<body>
+    <p id="num">1</p>
+    <button onclick="getRandom()">Change-Number</button>
+
+    <script>
+        let click = document.getElementById('num');
+        function getRandom(){
+            click.innerHTML = Math.floor(Math.random()*100)
+        }
+    </script>
+</body>
+</html>
+

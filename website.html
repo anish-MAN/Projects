@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website.</title>
+    
+    <style>
+        *{
+            padding: 0;margin:0;
+        }
+        nav{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            background: brown;
+            box-shadow: 15px;
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            display: inline-block;
+            padding: 10px;
+            background: brown;
+            color: beige;
+            text-decoration: none;
+        }
+        .dropdown{
+            position: relative;
+        }
+        .dropdown-content{
+            display: none;
+            position: absolute;
+            padding: 10px;
+            top: 20px;
+        }
+        .dropdown-content a{
+            width: 100px;
+        }
+        .dropdown:hover .dropdown-content{
+            display: block;
+        }
+        .container1{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 500px;
+            background: url(download.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid;
+        }
+        .container1 input, button{
+            border: none;
+            border-radius: 3px;
+            margin: 2px;
+            margin-top: 2%;
+        }
+        .container1 a{
+            background: none;
+        }
+        #search{
+            background-color: beige;
+            color: brown;
+            font-size: large;
+        }
+        .searchbtn{
+            background-color: beige;
+            color: brown;
+            font-size: large;
+        }
+        .container2{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+            background-color: beige;
+        }
+        .container2 img{
+            margin-top: 20px;
+            height: 200px;
+            width: 250px;
+        }
+        .container2 .card {
+            margin: 25px;
+        }
+        .container2 .card a{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+        .container3{
+            border: 2px solid brown;
+            background-color: beige;
+            color: brown;
+        }
+        .container3 footer p a{
+            background-color: beige;
+            color: brown;
+        }
+        footer{
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+    <nav>
+            <li><a href="#">HOME</a></li>
+            <li><a href="aboutus.html">ABOUT-US</a></li>
+            <li class="dropdown">
+                <a href="contact.html">CONTACT</a>
+            </li>
+            <li class="dropdown">
+            <a href="#">OUR-PRODUCTS</a>
+            <div class="dropdown-content">
+                <a href="https://www.flipkart.com/mobile-phones-store">Smartphones</a>
+                <a href="https://www.flipkart.com/clothing-and-accessories/pr?sid=clo">Clothes & Fashion</a>
+                <a href="https://www.flipkart.com/grocery-supermart-store?marketplace=GROCERY">Groceries</a>
+            </div>
+            </li>
+    </nav>
+
+    <div class="container1">
+        <a href="https://www.flipkart.com/">
+            <input type="text" id="search" placeholder="search here">
+            <button class="searchbtn">Search</button>
+        </a>
+    </div>
+
+    <div class="container2">
+        <div class="card">
+            <img src="smartphones.png" alt="Smartphones">
+            <a href="https://www.amazon.in/mobile-phones/b?ie=UTF8&node=1389401031">Smartphones</a>
+        </div>
+        <div class="card">
+            <img src="skincare.png" alt="Skincare">
+            <a href="https://www.nykaa.com/skin/c/8377">Skincare</a>
+        </div>
+        <div class="card">
+            <img src="grocery.png" alt="Grocery">
+            <a href="https://www.bigbasket.com/">Grocery</a>
+        </div>
+        <div class="card">
+            <img src="clothes&accessories.jpg" alt="Clothes & Accessories ">
+            <a href="https://www.flipkart.com/clothing-and-accessories/pr?sid=clo">Clothes & Fashion</a>
+        </div>
+        <div class="card">
+            <img src="books.jpg" alt="Books">
+            <a href="https://www.amazon.in/Books/b?ie=UTF8&node=976389031">Books</a>
+        </div>
+    </div>
+
+    <div class="container3">
+        <footer><p>More ways to shop<a href="https://www.shopsy.in/">Other Retailer</a>near you. Or call 0008005678.</p>
+        <p>India</p>
+        <p>Copyright @ 2024 Walmart Inc. All rights reserved.</p></footer>
+    </div>
+
+</body>
+</html>
