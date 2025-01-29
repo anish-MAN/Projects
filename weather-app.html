@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather-App</title>
+    
     <style>
         *{
             margin: 0;
@@ -40,8 +41,10 @@
             margin-top: 20px;
         }
     </style>
+
 </head>
 <body>
+
     <div class="container">
         <h1>Weather-App</h1>
         <input type="text" id="locationInput" placeholder="Enter a city">
@@ -54,16 +57,38 @@
     </div>
     
     <script>
-        const apikey = `309fbf4d24ee6e2250d2b188c4f7983a`;
-        const apiurl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIkey}&units=metric`;
-
-        const locationInput = document.getElementById('loactionInput');
+        const apikey = '309fbf4d24ee6e2250d2b188c4f7983a';
+        const locationInput = document.getElementById('locationInput');
         const searchbtn = document.getElementById('searchbtn');
         const locationElement = document.getElementById('location');
         const temperatureElement = document.getElementById('temperature');
         const descriptionElement = document.getElementById('description');
 
-        
+        searchbtn.addEventListener('click', function() {
+            const city = locationInput.value;
+            if (city) {
+                fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const location = data.name;
+                        const temperature = data.main.temp;
+                        const description = data.weather[0].description;
+
+                        locationElement.innerText = location;
+                        temperatureElement.innerText = `Temperature: ${temperature}°C`;
+                        descriptionElement.innerText = `Weather: ${description}`;
+                    })
+                    .catch(error => {
+                        console.log('Error:', error);
+                        locationElement.innerText = 'City not found';
+                        temperatureElement.innerText = '';
+                        descriptionElement.innerText = '';
+                    });
+            } else {
+                locationElement.innerText = 'Please enter a city';
+            }
+        });
     </script>
+
 </body>
 </html>
