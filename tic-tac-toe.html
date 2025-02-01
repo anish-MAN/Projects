@@ -14,10 +14,11 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: beige;
+    background-color: white;
 }
 
 #main {
+    height: 550px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -26,18 +27,19 @@ body {
     padding: 20px;
     border-radius: 10px;
     background-color: beige;
+    color: brown;
 }
 
 .board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     grid-gap: 5px;
-    margin-top: 20px;
 }
 
 .cell {
     width: 100px;
     height: 100px;
+    color: brown;
     border: 1px solid gray;
     display: flex;
     align-items: center;
