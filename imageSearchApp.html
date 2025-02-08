@@ -60,7 +60,7 @@ form {
 
 #search-results {
   display: grid;
-  grid-template-columns: 3fr 3fr;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   width: 100%;
   margin: 0 auto;
   padding: 20px;
@@ -84,7 +84,7 @@ form {
   object-fit: cover;
   transition: transform 0.3s ease-in-out;
 }
-.search-result a {
+.search-result p {
   padding: 10px;
   display: block;
   color: #333;
@@ -92,7 +92,7 @@ form {
   transition: background-color 0.3s ease-in-out;
 }
 
-.search-result:hover a {
+.search-result:hover p {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -114,10 +114,43 @@ form {
   background-color: white;
 }
 
+.download-button {
+  margin: auto;
+  padding: 10px 15px;
+  background-color: brown;
+  color: beige;
+  display: block;
+  text-align: center;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.download-button:hover {
+  background-color: darkred;
+}
+
+
 @media screen and (max-width: 768px) {
-  .search-result {
-    width: 45%;
-  }
+
+  #search-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-result {
+  margin-bottom: 60px;
+  width: 90%;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
 }
 @media screen and (max-width: 480px) {
   .search-result {
@@ -132,6 +165,11 @@ form {
     margin-bottom: 20px;
     width: 85%;
   }
+
+  #search-results {
+    padding: 0; margin: 0;
+  }
+
 }
     </style>
 
@@ -176,13 +214,18 @@ form {
           const image = document.createElement("img");
           image.src = result.urls.small;
           image.alt = result.alt_description;
-          const imageLink = document.createElement("a");
+          const imageLink = document.createElement("p");
           imageLink.href = result.links.html;
           imageLink.target = "_blank";
           imageLink.textContent = result.alt_description;
+          const downloadButton = document.createElement("button");
+          downloadButton.textContent = "Download";
+          downloadButton.classList.add("download-button");
+          downloadButton.onclick = () => downloadImage(result.urls.full);
 
           imageWrapper.appendChild(image);
           imageWrapper.appendChild(imageLink);
+          imageWrapper.appendChild(downloadButton);
           searchResults.appendChild(imageWrapper);
         });
 
@@ -191,6 +234,15 @@ form {
         if (page > 1) {
           showMoreButton.style.display = "block";
         }
+      }
+
+      function downloadImage(imageUrl) {
+        const link = document.createElement("a");
+        link.href = imageUrl;
+        link.download = "image.jpg";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       }
 
       form.addEventListener("submit", (event) => {
