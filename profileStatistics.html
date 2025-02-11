@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Statistics</title>
+
+    <style>
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  text-align: center;
+  background-color: beige;
+}
+
+.workExp {
+  margin: 20px;
+  border: dotted brown;
+  min-width: 200px;
+  height: 100px;
+  position: relative;
+  padding: 20px;
+}
+
+.workExp h4 {
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.counter {
+  font-size: 50px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: brown;
+}
+
+@media (max-width: 600px) {
+  body {
+    flex-direction: column;
+  }
+}
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="workExp">
+        <div class="counter" data-ceil="2">2</div>
+        <h4>Years Exprerience</h4>
+    </div>
+    <div class="workExp">
+        <div class="counter" data-ceil="55">55</div>
+        <h4>Project's Made</h4>
+    </div>
+
+    <script>
+
+        const countersEl = document.querySelectorAll(".counter");
+
+        countersEl.forEach((counterEl) => {
+            counterEl.innerText = "0";
+            incrementCounter();
+
+            function incrementCounter() {
+
+            let currentNum = +counterEl.innerText;
+            const dataCeil = counterEl.getAttribute("data-ceil");
+            const increment = dataCeil / 55;
+            currentNum = Math.ceil(currentNum + increment);
+
+            if (currentNum < dataCeil) {
+                counterEl.innerText = currentNum;
+                setTimeout(incrementCounter, 50);
+            } 
+            else {
+                counterEl.innerText = dataCeil;
+            }
+            }
+        });
+
+    </script>
+
+</body>
+</html>
