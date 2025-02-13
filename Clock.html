@@ -4,21 +4,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clock</title>
+
+    <style>
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+  background: url("https://images.unsplash.com/photo-1499002238440-d264edd596ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+  background-size: cover;
+  overflow: hidden;
+}
+
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 14px;
+  text-align: center;
+  color: white;
+}
+
+.clock {
+  display: flex;
+  color: white;
+  font-size: larger;
+}
+
+.clock div {
+  margin: 5px;
+  position: relative;
+}
+
+    </style>
+
   </head>
   <body>
-    <div id="hours">Hours</div>
-    <div id="mins">Minutes</div>
-    <div id="sec">Seconds</div>
-    <button onclick="clearInterval(startTimer)">Time</button>
+    <h1>Digital Clock</h1>
+    <div class="clock">
+      <div id="hours">Hours</div>
+      <div id="mins">Minutes</div>
+      <div id="sec">Seconds</div>
+      <div id="ampm">AM</div>
+    </div>
     <script>
       function gettime() {
         let currenttime = new Date();
         let currenthour = currenttime.getHours();
         let currentmin = currenttime.getMinutes();
         let currentsec = currenttime.getSeconds();
+        let ampm = document.getElementById("ampm");
+
         document.getElementById("hours").innerHTML = currenthour;
         document.getElementById("mins").innerHTML = currentmin;
         document.getElementById("sec").innerHTML = currentsec;
+
+       if (currenthour > 12) {
+         ampm.innerHTML = "PM";
+       }
+
       }
       let startTimer = setInterval(gettime, 1000);
     </script>
