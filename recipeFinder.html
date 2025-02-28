@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Finder</title>
+
+    <style>
+        body {
+            background-color: beige;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            margin-top: 10px;
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        #ingredientInput {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid beige;
+            border-radius: 5px;
+        }
+
+        #searchButton {
+            background-color: brown;
+            color: white;
+            padding: 10px 20px;
+            font-size: 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        #searchButton:hover {
+            background-color: darkred;
+        }
+
+        #recipeContainer {
+            margin-top: 20px;
+            width: 90%;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .recipe-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 180px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .recipe-item:hover {
+            transform: scale(1.05);
+        }
+
+        .recipe-item img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+        }
+
+        .recipe-item a {
+            color: brown;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+    
+</head>
+<body>
+
+    <div class="container">
+        <h1>Recipe Finder</h1>
+        <input type="text" id="ingredientInput" placeholder="Enter dish name !" />
+        <button id="searchButton">Search Recipes</button>
+    </div>
+    
+    <div id="recipeContainer"></div>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const inputField = document.getElementById("ingredientInput");
+            const searchButton = document.getElementById("searchButton");
+            const recipeContainer = document.getElementById("recipeContainer");
+
+            searchButton.addEventListener("click", searchRecipes);
+
+            inputField.addEventListener("keypress", function (event) {
+                if (event.key === "Enter") {
+                    searchRecipes();
+                }
+            });
+
+            function searchRecipes() {
+                const dishName = inputField.value.trim(); 
+
+                if (dishName === "") {
+                    alert("Please enter a dish name.");
+                    return;
+                }
+
+                recipeContainer.innerHTML = "<p>Loading recipes...</p>";
+
+                const apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${dishName}`;
+
+                fetch(apiUrl)
+                    .then(response => response.json()) 
+                    .then(data => {
+                        if (data.meals) {
+                            displayRecipes(data.meals);
+                        } else {
+                            recipeContainer.innerHTML = "<p>No recipes found. Try a different dish.</p>";
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error fetching recipes:", error);
+                        recipeContainer.innerHTML = "<p>Failed to fetch recipes. Please try again.</p>";
+                    });
+            }
+
+            function displayRecipes(recipes) {
+                recipeContainer.innerHTML = "";
+
+                recipes.forEach(recipe => {
+                    const recipeItem = document.createElement("div");
+                    recipeItem.classList.add("recipe-item");
+
+                    recipeItem.innerHTML = `
+                        <img src="${recipe.strMealThumb}" alt="${recipe.strMeal}">
+                        <strong>${recipe.strMeal}</strong><br>
+                        <a href="${recipe.strSource || `https://www.themealdb.com/meal/${recipe.idMeal}`}" target="_blank">View Recipe</a>
+                    `;
+
+                    recipeContainer.appendChild(recipeItem);
+                });
+            }
+        });
+
+    </script>
+</body>
+</html>
