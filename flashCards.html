@@ -4,37 +4,124 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Input Container</title>
-<link rel="stylesheet" href="flashcards.css">
+<style>
+  .container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }  
+  .container input {
+    width: calc(100% - 20px);
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .container button {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .container button:hover {
+    background-color: #0056b3;
+  }
+  #cardsDiv {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+  }
+  .cards {
+    width: 150px;
+    border: 3px solid;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+  }
+  .rectangle {
+    height: auto;
+    padding: 10px;
+    border: 2px solid;
+    background-color: #f8f9fa;
+  }
+  .rectangle1 {
+    margin-top: 5px;
+    height: auto;
+    padding: 10px;
+    border: 2px solid black;
+    display: none; /* Hide initially */
+    background-color: #fff3f3;
+  }
+  .show {
+    width: 100%;
+    margin-top: 10px;
+    padding: 5px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  .show:hover {
+    background-color: darkgreen;
+  }
+</style>
 </head>
 <body>
   <div class="container">
-    <label for="name">Questions:</label>
-    <input type="text" id="que" name="name" required>
+    <label for="que">Questions:</label>
+    <input type="text" id="que" required>
 
-    <label for="name">Answers:</label>
-    <input type="text" id="ans" name="name" required>
+    <label for="ans">Answers:</label>
+    <input type="text" id="ans" required>
 
     <button type="submit" onclick="add()">Submit</button>
   </div>
 
-<div id="cardsDiv"></div>
+  <div id="cardsDiv"></div>
+
 <script>
-  let que = document.getElementById('que')
-  let ans = document.getElementById('ans')
-  let cardsDiv = document.getElementById('cardsDiv')
+  function add() {
+    let queValue = document.getElementById('que').value;
+    let ansValue = document.getElementById('ans').value;
+    let cardsDiv = document.getElementById('cardsDiv');
 
-  function add(){
-    let card = document.createElement('div')
-    card.className = 'card'
+    if (queValue.trim() === "" || ansValue.trim() === "") {
+      alert("Please enter both a question and an answer.");
+      return;
+    }
+
+    let card = document.createElement('div');
+    card.className = 'cards';
+
     card.innerHTML = `
-    <div class= "rectangle">${que.value}</div>
-    <div class= "rectangle1">${ans.value}</div>
-    <button class="show">Show</button>
-    `
-    cardsDiv.appendChild(card)
-  }
+      <div class="rectangle">${queValue}</div>
+      <div class="rectangle1">${ansValue}</div>
+      <button class="show">Show</button>
+    `;
 
-  
+    let showBtn = card.querySelector(".show");
+    let answerDiv = card.querySelector(".rectangle1");
+
+    showBtn.addEventListener("click", () => {
+      answerDiv.style.display = answerDiv.style.display === "none" ? "block" : "none";
+      showBtn.textContent = answerDiv.style.display === "none" ? "Show" : "Hide";
+    });
+
+    cardsDiv.appendChild(card);
+
+    document.getElementById('que').value = "";
+    document.getElementById('ans').value = "";
+  }
 </script>
 </body>
 </html>
